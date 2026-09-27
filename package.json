@@ -2,11 +2,12 @@
   "name": "cicd-pipeline-app",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "security-scan": "gitleaks detect --source . --verbose && docker run --rm -v \"%cd%:/src\" semgrep/semgrep semgrep --config auto /src && npm audit --audit-level=high"
   },
   "dependencies": {
     "next": "16.3.6",
